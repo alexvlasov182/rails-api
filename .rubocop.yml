@@ -1,0 +1,17 @@
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 1000
+  
+Metrics/AbcSize:
+  Max: 1000
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/NumericPredicate:
+  Enabled: false
