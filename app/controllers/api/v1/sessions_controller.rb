@@ -1,4 +1,5 @@
 class Api::V1::SessionsController < Devise::SessionsController
+  before_action :ensure_params_exist, only: :create
   before_action :sign_in_params, only: :create
   before_action :load_user, only: :create
   before_action :valid_token, only: :destroy
@@ -24,6 +25,12 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def sign_in_params
     params.require(:sign_in).permit(:email, :password)
+  end
+
+  def ensure_params_exist
+    return if params[:sign_in].present?
+
+    json_response('Missing params', false, {}, :bad_request)
   end
 
   # load user
