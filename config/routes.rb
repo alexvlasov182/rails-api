@@ -8,6 +8,10 @@ Rails.application.routes.draw do
         post 'sign_in', to: 'sessions#create'
         delete 'log_out', to: 'sessions#destroy'
       end
+      post 'facebook', to: 'users#facebook'
+      resources :books, only: %i[index show] do
+        resources :reviews, only: %i[index show create update destroy]
+      end
     end
   end
 end
