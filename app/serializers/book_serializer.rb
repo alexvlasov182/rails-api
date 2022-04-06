@@ -1,22 +1,23 @@
 class BookSerializer < ActiveModel::Serializer
   attributes :id, :title, :author, :image,
-             :average_rating_of_book, :content_rating_of_book, :recommend_rating_of_book,
-             #  :total_reviews
+             #  :average_rating_of_book, :content_rating_of_book, :recommend_rating_of_book,
+             :total_reviews
 
-             # has_many :reviews
-             def average_rating_of_book
-               object.reviews.count == 0 ? 0 : object.reviews.average(:average_rating)
-             end
+  # has_many :reviews
 
-  def content_rating_of_book
-    object.reviews.count == 0 ? 0 : object.reviews.average(:content_rating)
-  end
-
-  def recommend_rating_of_book
-    object.reviews.count == 0 ? 0 : object.reviews.average(:recommend_rating)
-  end
-
-  # def total_reviews
-  #   object.reviews.count
+  # def average_rating_of_book
+  #   object.reviews.count == 0 ? 0 : object.reviews.average(:average_rating)
   # end
+
+  # def content_rating_of_book
+  #   object.reviews.count == 0 ? 0 : object.reviews.average(:content_rating)
+  # end
+
+  # def recommend_rating_of_book
+  #   object.reviews.count == 0 ? 0 : object.reviews.average(:recommend_rating)
+  # end
+
+  def total_reviews
+    object.reviews_count
+  end
 end
